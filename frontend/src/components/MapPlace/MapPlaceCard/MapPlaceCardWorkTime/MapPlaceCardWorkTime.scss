@@ -1,0 +1,29 @@
+@import '../../../../assets/styles/mixins.scss';
+
+.MapPlaceCardWorkTime {
+    font-size: 11px;
+
+    & > *:not(:last-child) {
+        margin-bottom: var(--space-2xs);  
+    }
+
+    &-Container {
+        @include flex-space-center();
+        border-bottom: 1px solid var(--color-bg-secondary);
+    }
+
+    &-Day {
+        font-weight: 600;
+        margin-bottom: var(--space-3xs);
+    }
+
+    &-Day, &-Time {
+        color: var(--color-typo-primary);
+    }
+
+    &-Time_alert {
+        font-weight: 700;
+        font-size: 12px;
+        color: var(--color-typo-alert);
+    }
+}

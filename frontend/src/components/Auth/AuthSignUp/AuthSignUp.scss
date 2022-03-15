@@ -1,0 +1,12 @@
+@import '../../../assets/styles/mixins.scss';
+
+.AuthSignUp {
+    @include flex-center();
+    flex-direction: column;
+    width: 100%;
+    margin-top: var(--space-xl);
+
+    &-Input {
+        margin-bottom: var(--space-m);
+    }
+}

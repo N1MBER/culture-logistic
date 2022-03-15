@@ -1,0 +1,185 @@
+@import '../../assets/styles/mixins.scss';
+
+@mixin secondaryButton(){
+    border: var(--control-border-width) solid var(--color-control-bg-border-secondary) !important;
+
+    --color-hover: var(--color-control-typo-secondary-hover);
+    color: var(--color-control-typo-secondary) !important;
+    background-color: var(--color-bg-default) !important;
+    border: var(--control-border-width) solid var(--color-control-bg-border-secondary) !important;
+    line-height: calc(var(--button-height) - var(--control-border-width) * 2) !important;
+    
+    &:hover {
+        border-color: var(--color-control-bg-border-secondary-hover) !important;
+        color: var(--color-hover) !important;
+    }
+}
+
+@mixin primaryButton(){
+    --color-hover: var(--color-control-typo-primary-hover);
+    color: var(--color-control-typo-primary) !important;
+    background-color: var(--color-control-bg-primary) !important;
+
+    &:hover {
+        color: var(--color-hover) !important;
+        background-color: var(--color-control-bg-primary-hover) !important;
+    }
+}
+
+.GoogleMap {
+    height: 100%;
+    position: relative;
+
+    & > div {
+        transition: width 0.5s;
+    }
+
+    &_mode {
+        &_small .gmnoprint[role=menubar]{
+            display: none;
+        }
+    }
+
+    &_mapMode {
+        &_roadmap .gmnoprint[role=menubar] {
+            & > div:first-child > button {
+                @include primaryButton();
+            }
+
+            & > div:last-child > button {
+                @include secondaryButton();
+            }
+        }
+
+        &_hybrid .gmnoprint[role=menubar] {
+            & > div:first-child > button {
+                @include secondaryButton();
+            }
+
+            & > div:last-child > button {
+                @include primaryButton();
+            }
+        }
+    }
+
+    & .gmnoprint[role=menubar]{
+        top: var(--space-s) !important;
+        left: var(--space-s) !important;
+
+        & > * {
+            & > button {
+                --button-height: var(--control-height-m);
+                --button-font-size: var(--control-text-size-m);
+                --button-space: var(--control-space-m);
+                position: relative !important;
+                display: inline-block !important;
+                overflow: hidden !important;
+                -webkit-box-sizing: border-box !important;
+                box-sizing: border-box !important;
+                max-width: 100% !important;
+                height: var(--button-height) !important;
+                padding: 0 var(--button-space)!important;
+                background: transparent;
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: var(--control-radius)  !important;
+                font-family: var(--font-primary) !important;
+                font-size: var(--button-font-size) !important;
+                font-weight: var(--font-weight-text-regular) !important;
+                line-height: var(--button-height) !important;
+                white-space: nowrap !important;
+                text-decoration: none !important;
+                text-overflow: ellipsis !important;
+                cursor: pointer !important;
+                -webkit-transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, fill 0.15s ease, -webkit-box-shadow 0.15s ease !important;
+                transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, fill 0.15s ease, -webkit-box-shadow 0.15s ease !important;
+                transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease,
+                color 0.15s ease, fill 0.15s ease !important;
+                transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease,
+                color 0.15s ease, fill 0.15s ease, -webkit-box-shadow 0.15s ease !important;
+                -ms-flex-negative: 0 !important;
+                flex-shrink: 0 !important;
+                -webkit-appearance: none !important;
+            }
+            &:first-child > button {
+                border-radius: 20px 0 0 20px !important;
+            }
+            &:last-child > button {
+                border-radius: 0 20px 20px 0 !important;
+            }
+        }
+    }
+
+    & .gm-svpc, & .gm-style-cc {
+        display: none !important;
+    }
+
+    & .gm-style-mtc {
+        & > ul[role=menu] {
+            display: none !important;
+        }
+    }
+
+    & .gmnoprint.gm-bundled-control {
+        bottom: 180px !important;
+    }
+
+    & .gmnoprint {
+        & > div:first-child {
+            background: none !important;
+            box-shadow: none !important;
+            height: 92px !important;
+            @include flex-space-center();
+            flex-direction: column;
+
+            & > div:nth-child(2) {
+                display: none !important;
+            }
+
+            & .gm-control-active[type=button] {
+                display: flex !important;
+                @include flex-center();
+                background-color: var(--color-bg-default);
+                @include secondaryButton();
+                border-radius: 50%;
+            
+                &::after, &::before {
+                    position: absolute;
+                    width: var(--space-m);
+                    height: calc(var(--space-2xs) * 2 / 3);
+                    content: '';
+                    transition: background-color 0.3s;
+                    background: var(--color-control-typo-secondary) !important;
+                }
+
+                &:hover {
+                    &::after, &::before {
+                        background-color: var(--color-control-typo-secondary-hover) !important;
+                    }
+                }
+
+                &:first-child::before {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+    }
+
+    & .infoBox {
+        width: auto !important;
+        overflow: visible !important;
+
+        & > img {
+            display: none;
+        }
+    }
+
+    & .gm-control-active[type=button] {
+        display: none;
+        width: var(--space-3xl) !important;
+        height: var(--space-3xl) !important;
+        & > * {
+            display: none !important;
+        }
+    }
+}

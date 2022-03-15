@@ -1,0 +1,85 @@
+@import '../../assets/styles/mixins.scss';
+
+.Auth {
+    position: relative;
+    @include flex-center();
+    flex-direction: column;
+    padding: var(--space-l);
+
+    &-Title {
+        @include flex-space-center();
+        width: 100%;
+        color: var(--color-typo-brand);
+        margin-bottom: var(--space-l);
+        & > * {
+            flex: 1;
+            align-items: start;
+        }
+    }
+
+    &-CloseButton {
+        @include clear();
+        position: absolute;
+        top: var(--space-l);
+        right: var(--space-l);
+        color: var(--color-typo-primary);
+        cursor: pointer;
+        transition: transform 0.3s;
+
+        &:hover {
+            transform: rotate(-90deg);
+        }
+    }
+
+    &-Switcher{
+        @include flex-space-center();
+        width: 100%;
+        position: relative;
+
+        &_mode {
+            &_signin::after {
+                left: 0%;
+            }
+
+            &_signup::after {
+                left: 50%;
+            }
+        }
+
+        &::after {
+            position: absolute;
+            bottom: 0;
+            width: 50%;
+            height: var(--space-3xs);
+            content: '';
+            background-color: var(--color-bg-brand);
+            transition: left 0.3s linear;
+        }
+    }
+
+    &-SwitcherButton {
+        @include clear();
+
+        flex: 1;
+        cursor: pointer;
+        height: var(--space-3xl);
+
+        & > * {
+            color: var(--color-typo-secondary);
+            transition: color 0.3s;
+        }
+
+        &:hover:not(&_active) {
+            & > * {
+                color: var(--color-typo-primary);
+            } 
+        }
+
+        &_active {
+            & > * {
+                font-weight: 700;
+                color: var(--color-typo-brand);
+            } 
+        }
+    }
+}

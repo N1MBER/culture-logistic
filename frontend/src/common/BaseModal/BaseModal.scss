@@ -1,0 +1,18 @@
+@import '../../assets/styles/mixins.scss';
+
+.BaseModal {
+    position: relative;
+    padding: var(--space-xl);
+
+    &-Container {
+        margin-top: var(--space-s);
+    }
+
+    &-Button {
+        position: absolute;
+        top: var(--space-l);
+        right: var(--space-l);
+        cursor: pointer;
+        @include clear();
+    }
+}

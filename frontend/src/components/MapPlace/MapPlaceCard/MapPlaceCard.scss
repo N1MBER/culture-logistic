@@ -1,0 +1,188 @@
+@import '../../../assets/styles/mixins.scss';
+
+.MapPlaceCard {
+    background-color: var(--color-bg-default);
+    position: relative;
+    @include flex-center();
+    flex-direction: column;
+    min-width: 100%;
+    max-height: var(--infobox-max-height);
+
+    &_view {
+        &_infobox {
+            box-shadow: var(--shadow-modal);
+            border-radius: var(--control-radius);
+            min-width: 240px;
+            max-width: 240px;
+            padding: var(--space-l);
+
+
+            & > * {
+                &:not(:first-child) {
+                    width: 100%;
+                }
+        
+                &:not(:last-child) {
+                    margin-bottom: var(--space-xs);  
+                }
+            }
+        }
+
+        &_card {
+            & > * {
+                &:not(:first-child) {
+                    width: 100%;
+                }
+        
+                &:not(:last-child) {
+                    margin-bottom: var(--space-xs);  
+                }
+            }
+
+            & .MapPlaceCard-CloseButton {
+                top: 0;
+                right: 0;
+            }
+        }
+
+        &_card_short {
+            @include clear();
+            cursor: pointer;
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+            & .MapPlaceCard-Title {
+                grid-row-start: 1;
+                grid-row-end: 4;
+                flex-direction: column-reverse;
+                @include flex-start();
+                height: 100%;
+
+                & .MapPlaceCard-TitleContainer {
+                    width: 160px;
+                    height: 160px;
+                    margin-top: 10px;
+                    border-radius: var(--space-m);
+                }
+            }
+
+            & .MapPlaceCard-GalleryText,
+            & .MapPlaceCard-Gallery,
+            & .MapPlaceCard-EventsText,
+            & .MapPlaceCard-Events {
+                display: none;
+            }
+        }
+    }
+
+    &-CloseButton {
+        @include clear();
+        position: absolute;
+        top: var(--space-l);
+        right: var(--space-l);
+        cursor: pointer;
+        color: var(--color-typo-primary);
+        transition: transform 0.3s;
+
+        &:hover {
+            transform: rotate(-90deg);
+        }
+    }
+
+    &-Title {
+        @include flex-start();
+        align-items: center;
+        width: 100%;
+        gap: var(--space-s);
+    }
+
+    &-TitleContainer {
+        width: var(--space-3xl);
+        height: var(--space-3xl);
+        background: var(--color-bg-secondary);
+        border-radius: 50%;
+        border: 1px solid var(--color-control-bg-border-default);
+        @include flex-center();
+
+        &_hasImage {
+            overflow: hidden;
+            width: var(--space-5xl);
+            height: var(--space-5xl);
+        }
+    }
+
+    &-TitleImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &-Gallery {
+        overflow-x: scroll;
+        @include flex-start();
+        gap: var(--space-m);
+
+        &::-webkit-scrollbar-track {
+            background-color: var(--color-bg-secondary);
+            border-radius: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--color-bg-brand);
+            border-radius: 5px;
+        }
+    }
+
+    &-GalleryContainer {
+        min-width: var(--space-6xl);
+        min-height: var(--space-6xl);
+        max-width: var(--space-6xl);
+        max-height: var(--space-6xl);
+        overflow: hidden;
+        border-radius: var(--control-radius);
+        margin-bottom: var(--space-xs);
+    }
+
+    &-GalleryImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &-Events {
+        overflow-x: scroll;
+        @include flex-start();
+        
+        gap: var(--space-m);
+
+        &::-webkit-scrollbar-track {
+            background-color: var(--color-bg-secondary);
+            border-radius: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--color-bg-brand);
+            border-radius: 5px;
+        }
+    }
+
+    &-EventContainer {
+        @include clear();
+        min-width: var(--space-6xl);
+        max-width: var(--space-6xl);
+        cursor: pointer;
+    }
+
+    &-EventImage {
+        width: 100%;
+        min-height: var(--space-6xl);
+        max-height: var(--space-6xl);
+        overflow: hidden; 
+        
+        & > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

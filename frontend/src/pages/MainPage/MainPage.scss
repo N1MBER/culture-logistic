@@ -1,0 +1,16 @@
+.MainPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+
+    &-Switch {
+        position: absolute;
+        top: var(--space-l);
+        right: var(--space-l);
+        padding: var(--space-m);
+        border-radius: var(--control-radius);
+        background-color: var(--color-bg-default);
+        box-shadow: var(--shadow-modal);
+    }
+}

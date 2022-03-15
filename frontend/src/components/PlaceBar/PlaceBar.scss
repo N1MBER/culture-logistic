@@ -1,0 +1,37 @@
+@import '../../assets/styles/mixins.scss';
+
+.PlaceBar { 
+    width: var(--place-bar-width);
+    position: relative;
+    @include flex-start();
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: var(--space-l);
+    transition: margin 0.5s;
+    margin-left: var(--place-bar-margin);
+    border-right: 2px solid var(--color-bg-brand);
+    max-height: var(--place-bar-max-height);
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--color-bg-secondary);
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color-bg-brand);
+        border-radius: 5px;
+    }
+
+    & > div:first-child {
+        margin-bottom: var(--space-m);  
+    }
+
+    & > *:not(:last-child) {
+        margin-bottom: var(--space-2xl);  
+    }
+
+    &_open {
+        margin-left: 0;
+    }
+}

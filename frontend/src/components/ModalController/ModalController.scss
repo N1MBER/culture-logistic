@@ -1,0 +1,24 @@
+.ModalController {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 10vh;
+    z-index: 2000000;
+
+    &-Button {
+        position: absolute;
+        top: var(--space-2xl);
+        right: var(--space-2xl);
+        cursor: pointer;
+        color: var(--color-bg-default);
+        background: none;
+        border: none;
+        transition: transform 0.3s;
+
+        &:hover {
+            transform: rotate(90deg);
+        }
+
+    }
+}
